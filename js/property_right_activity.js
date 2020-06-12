@@ -8,7 +8,8 @@ $(function () {
 		alert('测试2');
 		Tag.postMessage('');
 		$("#appshow").attr("style","display:block")
-		$("#otherShow").attr("style","display:none")             
+		// $("#otherShow").attr("style","display:none")
+		document.getElementById('otherShow').remove();
 		console.log("app打开")
     }
     catch(err) {
