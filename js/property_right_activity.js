@@ -4,19 +4,21 @@ var btnFlag = true;
 
 $(function () {
     //登录状态
-    try {   
-        Cookies.set("one","one")   
-        if(Cookies.get("userInfo")){
-            let name = JSON.parse(Cookies.get("userInfo")).name;
-            $("#userAccount").html(name)
-            $(".user-p").attr("style","display:block")
-            $(".no-p").attr("style","display:none")
-        }
+    try {
+		alert('测试');
+		Tag.postMessage('');
+		$("#appshow").attr("style","display:block")
+		$("#otherShow").attr("style","display:none")             
+		console.log("app打开")
     }
     catch(err) {
-        $("#appshow").attr("style","display:block")
-        $("#otherShow").attr("style","display:none")             
-        console.log("app打开")
+       Cookies.set("one","one")
+       if(Cookies.get("userInfo")){
+           let name = JSON.parse(Cookies.get("userInfo")).name;
+           $("#userAccount").html(name)
+           $(".user-p").attr("style","display:block")
+           $(".no-p").attr("style","display:none")
+       }
     }
     
     try{
