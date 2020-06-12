@@ -5,7 +5,7 @@ var btnFlag = true;
 $(function () {
     //登录状态
     try {
-		alert('测试');
+		alert('测试2');
 		Tag.postMessage('');
 		$("#appshow").attr("style","display:block")
 		$("#otherShow").attr("style","display:none")             
