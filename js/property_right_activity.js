@@ -5,14 +5,16 @@ var btnFlag = true;
 $(function () {
     //登录状态
     try {
-		alert('测试2');
 		Tag.postMessage('');
+		$("#appshow").attr("style","height: 0.64rem")
+		$("#otherShow").attr("style","height:1.06rem")
 		$("#appshow").attr("style","display:block")
-		// $("#otherShow").attr("style","display:none")
-		document.getElementById('otherShow').remove();
+		$("#otherShow").attr("style","display:none")
 		console.log("app打开")
     }
     catch(err) {
+		$("#appshow").attr("style","height: 0.64rem")
+		$("#otherShow").attr("style","height:1.06rem")
        Cookies.set("one","one")
        if(Cookies.get("userInfo")){
            let name = JSON.parse(Cookies.get("userInfo")).name;
