@@ -5,25 +5,29 @@ var btnFlag = true;
 $(function () {
     //登录状态
     try {
-		Tag.postMessage('');
-		$("#appshow").attr("style","height: 0.64rem")
-		$("#otherShow").attr("style","height:1.06rem")
-		$("#appshow").attr("style","display:block")
-		$("#otherShow").attr("style","display:none")
-		console.log("app打开")
+        //app打开
+        Tag.postMessage('');   
+        // $("#appshow").attr("style","display:block")
+        // $("#appshow").attr("style","height: 0.64rem")
+        // $("#otherShow").attr("style","display:none") 
+        $("#otherShow").remove() 
+        // $("#otherShow").attr("style","height:1.06rem")                 
     }
-    catch(err) {
-		$("#appshow").attr("style","height: 0.64rem")
-		$("#otherShow").attr("style","height:1.06rem")
-       Cookies.set("one","one")
-       if(Cookies.get("userInfo")){
-           let name = JSON.parse(Cookies.get("userInfo")).name;
-           $("#userAccount").html(name)
-           $(".user-p").attr("style","display:block")
-           $(".no-p").attr("style","display:none")
-       }
+    catch(err) { 
+        //浏览器打开
+        // $("#appshow").attr("style","display:none")
+        $("#appshow").remove() 
+        // $("#otherShow").attr("style","display:block")  
+        // $("#appshow").attr("style","height: 0.64rem")  
+        // $("#otherShow").attr("style","height:1.06rem")      
+        if(Cookies.get("userInfo")){
+            let name = JSON.parse(Cookies.get("userInfo")).name;
+            $("#userAccount").html(name)
+            $(".user-p").attr("style","display:block")
+            $(".no-p").attr("style","display:none")
+        }
     }
-    
+    //调用app方法
     try{
         $("#giveUrl").click(function(){
             inviteRegister.postMessage("");
@@ -34,8 +38,8 @@ $(function () {
     }
 
     try{
-        $("#receiveGift").click(function(){
-            inviteRegister.postMessage("");
+        $("#giveGift").click(function(){
+            receiveGift.postMessage("");
         })
     }
     catch(err){
@@ -128,7 +132,21 @@ $(function () {
             }
         })
     })
-
+    //去浏览器下载
+    $("#gobower").click(function(){
+        //判断是否是微信浏览器的函数
+        //window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
+        var ua = window.navigator.userAgent.toLowerCase();
+        //通过正则表达式匹配ua中是否含有MicroMessenger字符串
+        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+            $("#happyModal").attr("style","display:none")
+            $("#browserModal").attr("style","display:block")
+        }else{
+           console.log("普通浏览器")
+        }
+  
+       
+    })
 })
 //登录
 function loginActivity(phoneLogin,passwordOne) {
@@ -302,7 +320,7 @@ function inviteFriend(){
         $("#bigModal").attr("style","display:block")
         return false;
     }
-    toast("海报地址")
+    window.location.href="share.html"
 }
 
 //获得分享的唯一标识
@@ -363,7 +381,7 @@ function possessGift(code){
 //邀请他人注册
 function golink(){
     $("#sorryModal").attr("style","display:none")
-    toast("海报地址")
+    window.location.href="share.html"
 }
 
 /********************检查手机号*****************/

@@ -25,7 +25,7 @@
     <div class="newup"></div>
     <div class="font-img"></div> 
     <!-- 浏览器打开 -->
-    <div class="fixed-box" style="height: 1.06rem; display: block;" id="otherShow">
+    <div class="fixed-box" style="height:1.06rem;" id="otherShow">
         <p class="fixed-p user-p" style="display: none;">您好，<span id="userAccount"></span><span class="fixed-span" onclick="logout();">退出登录</span></p>
         <p class="fixed-p no-p" style="display: block;">未登录，<span class="fixed-span" style="margin-left: 0;" onclick="showLoginModal();">立即登录</span></p>
         <p style="display: flex;justify-content: center;">
@@ -35,7 +35,7 @@
     </div>
 
     <!-- app内 -->
-    <div class="fixed-box" style="height: 0.64rem;display: none;" id="appshow">       
+    <div class="fixed-box" style="height:0.64rem;" id="appshow">       
         <p style="display: flex;justify-content: center;margin-top:0.12rem;">
             <button class="fixed-leftbtn" id="giveUrl">邀请他人注册</button>
             <button class="fixed-rightbtn" id="giveGift">领取注册礼包</button>
@@ -91,7 +91,7 @@
             <img src="./images/security.png" class="modal-img" />
             <p class="p18">领取完成！</p>
             <p class="p14">快去登录取证宝APP看看吧</p>
-            <button class="downBtn">下载取证宝APP</button>
+            <button class="downBtn" id="gobower">下载取证宝APP</button>
         </div>
     </div>
 
@@ -106,6 +106,25 @@
         </div>
     </div>
 
+    <!-- 在浏览器打开 -->
+    <div class="generalframezz" style="display: none;" id="browserModal">
+        <div class="topbox">
+            <div style="height: 0.25rem;display: flex;align-items: center;margin:0.67rem 0.11rem 0rem 0.23rem;">
+                <img src="./images/1.png" class="img1" />
+                <span class="browerp">点击右上角的</span>
+                <img src="./images/dian.png" class="img2" />
+                <span class="browerp">按钮</span>
+            </div>
+            <div style="display: flex;">
+                <img src="./images/jian.png" class="img3" />
+            </div>
+        </div>
+        <div style="height: 0.25rem;display: flex;align-items: center;margin:0.28rem 0 0 0.51rem;">
+            <img src="./images/2.png" class="img1" />
+            <span class="browerp">选择</span>
+            <span class="browerp">“在浏览器中打开”</span>
+        </div>
+    </div>
 </div>
 
 </body>
