@@ -39,7 +39,7 @@ $(function () {
 
     try{
         $("#giveGift").click(function(){
-            receiveGift.postMessage("");
+            receiveActivityGift.postMessage("");
         })
     }
     catch(err){
