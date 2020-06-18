@@ -7,24 +7,17 @@ $(function () {
     try {
         //app打开
         Tag.postMessage('');   
-        // $("#appshow").attr("style","display:block")
-        // $("#appshow").attr("style","height: 0.64rem")
-        // $("#otherShow").attr("style","display:none") 
-        $("#otherShow").remove() 
-        // $("#otherShow").attr("style","height:1.06rem")                 
+        $("#otherShow").remove()                 
     }
     catch(err) { 
         //浏览器打开
-        // $("#appshow").attr("style","display:none")
-        $("#appshow").remove() 
-        // $("#otherShow").attr("style","display:block")  
-        // $("#appshow").attr("style","height: 0.64rem")  
-        // $("#otherShow").attr("style","height:1.06rem")      
+        $("#appshow").remove()      
         if(Cookies.get("userInfo")){
             let name = JSON.parse(Cookies.get("userInfo")).name;
             $("#userAccount").html(name)
             $(".user-p").attr("style","display:block")
             $(".no-p").attr("style","display:none")
+            $(".showgif").attr("style","display:block")
         }
     }
     //调用app方法
@@ -168,6 +161,7 @@ function loginActivity(phoneLogin,passwordOne) {
                 $("#userAccount").html(res.register.name)
                 $(".user-p").attr("style","display:block")
                 $(".no-p").attr("style","display:none")
+                $(".showgif").attr("style","display:block")
                 Cookies.set("userInfo", JSON.stringify(res.register), { expires: 7 });                
             }
             else{
@@ -281,6 +275,7 @@ function logout(){
                 $("#userAccount").html("")
                 $(".user-p").attr("style","display:none")
                 $(".no-p").attr("style","display:block")
+                $(".showgif").attr("style","display:none")
                 Cookies.remove('userInfo');
             }
             else{
@@ -314,17 +309,26 @@ function goRegister(){
 }
 
 //邀请好友注册
-function inviteFriend(){
+function inviteFriend(val){    
     let userInfo = Cookies.get("userInfo")?JSON.parse(Cookies.get("userInfo")):'';
     if(userInfo.length == 0){
         $("#bigModal").attr("style","display:block")
         return false;
     }
-    window.location.href="share.html"
+    if(val==1){
+        burialPoint('website','shareActivity','10001');
+        window.location.href="share.html"
+    }else if(val==2){
+        window.location.href="shareTwo.html"
+    }
+    
 }
 
 //获得分享的唯一标识
-function receiveGift(){
+function receiveGift(val){
+    if(val==1){
+        burialPoint('website','receiveActivity','10002');
+    }   
     let userInfo = Cookies.get("userInfo")?JSON.parse(Cookies.get("userInfo")):'';
     if(userInfo.length == 0){
         $("#bigModal").attr("style","display:block")
@@ -379,9 +383,20 @@ function possessGift(code){
 }
 
 //邀请他人注册
-function golink(){
+function golink(val){
     $("#sorryModal").attr("style","display:none")
-    window.location.href="share.html"
+    if(val==1){
+        try{
+            inviteRegister.postMessage("");
+        }
+        catch(err){
+            window.location.href="share.html"
+        }
+       
+    }else if(val==2){
+        window.location.href="shareTwo.html"
+    }
+    
 }
 
 /********************检查手机号*****************/
@@ -419,4 +434,14 @@ function GetQueryString (name) {
     reg = null;
     r = null;
     return context == null || context == "" || context == "undefined" ? "" : context;
+}
+
+//app用来调用领取成功
+function showSuccessAPP(){
+    $("#happyModal").attr("style","display:block")
+    $("#gobower").remove()
+}
+//app用来调用老用户
+function showFailAPP(){
+    $("#sorryModal").attr("style","display:block")
 }

@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <link rel="icon" href="./favicon.ico">
-    <title>取证宝</title>
+    <title>取证</title>
     <meta name="keywords"
           content="版权服务,版权百科,版权,版权家,版权存证,版权交易,版权监测,版权维权,版权登记,版权公证,版权签名,数字版权,版全家,版权侵权取证,版权法律维权服务,区块链版权登记,区块链版权确权,区块链版权存证,区块链版权">
     <meta name="description"
@@ -16,7 +16,7 @@
         .share{
             height:100vh;
             width:100%;
-            background: #000;
+            background: #282194;
             overflow: hidden;
         }
     </style>
@@ -42,21 +42,21 @@
                 if(res.code == 200){
                     var canvas = document.createElement("canvas");
                     canvas.width = 375;
-                    canvas.height = 636;
+                    canvas.height = 667;
                     var context = canvas.getContext("2d");
                     context.rect(0 , 0 , canvas.width , canvas.height);
                     context.fillStyle = "#000";
                     context.fill();
                     var myImage = new Image();
-                    myImage.src = "./images/share.png";  //背景图片 你自己本地的图片或者在线图片
+                    myImage.src = "./images/two7.png";  //背景图片 你自己本地的图片或者在线图片
                     myImage.crossOrigin = 'Anonymous';
                     myImage.onload = function(){
-                        context.drawImage(myImage , 0 , 0 , 375 , 636);
+                        context.drawImage(myImage , 0 , 0 , 375 , 667);
                         var myImage2 = new Image();
                         myImage2.src = "data:image/png;base64,"+res.evidenceActivityPicBase64;  //你自己本地的图片或者在线图片
                         myImage2.crossOrigin = 'Anonymous';
                         myImage2.onload = function(){
-                        context.drawImage(myImage2 , 36 , 305 , 126 , 126);
+                        context.drawImage(myImage2 , 146 , 457 , 97 , 97);
                         var base64 = canvas.toDataURL("image/png"); //"image/png" 这里注意一下
                         var img = document.getElementById('avatar');
                         // document.getElementById('avatar').src = base64;
