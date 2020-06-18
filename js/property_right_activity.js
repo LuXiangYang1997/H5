@@ -438,10 +438,12 @@ function GetQueryString (name) {
 
 //app用来调用领取成功
 function showSuccessAPP(){
+	alert("ceshisuccess")
     $("#happyModal").attr("style","display:block")
     $("#gobower").remove()
 }
 //app用来调用老用户
 function showFailAPP(){
+		alert("ceshifail")
     $("#sorryModal").attr("style","display:block")
 }
