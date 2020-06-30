@@ -15,7 +15,7 @@ $(function () {
         }
         linkApp(0)
 		alert(loginStatus);
-        if(loginStatus == "true") {
+        if(loginStatus==1) {
             $(".showgif").attr("style","display:block")
         }else{
             $(".showgif").attr("style","display:none")
