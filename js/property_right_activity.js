@@ -8,16 +8,7 @@ $(function () {
         //app打开
         // Tag.postMessage(''); 
         var loginStatus 
-		isLogin.postMessage('');
-        function linkApp(val){           
-            $("#otherShow").remove();
-            loginStatus  = val 
-			if(loginStatus==true) {
-			    $(".showgif").attr("style","display:block")
-			}else{
-			    $(".showgif").attr("style","display:none")
-			}
-        }                 
+		isLogin.postMessage('');          
     }
     catch(err) { 
         //浏览器打开
@@ -165,6 +156,17 @@ $(function () {
 
     })
 })
+
+   function linkApp(val){           
+            $("#otherShow").remove();
+            loginStatus  = val 
+			if(loginStatus==true) {
+			    $(".showgif").attr("style","display:block")
+			}else{
+			    $(".showgif").attr("style","display:none")
+			}
+        }    
+
 //登录
 function loginActivity(phoneLogin,passwordOne) {
     let dataVal = {
