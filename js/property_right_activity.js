@@ -8,16 +8,18 @@ $(function () {
         //app打开
         // Tag.postMessage(''); 
         var loginStatus 
-		isLogin.postMessage('');
         function linkApp(val){           
+            isLogin.postMessage('');
             $("#otherShow").remove();
             loginStatus  = val 
-			if(loginStatus == 1) {
-			    $(".showgif").attr("style","display:block")
-			}else{
-			    $(".showgif").attr("style","display:none")
-			}
         }
+        linkApp(0)
+        if(loginStatus==true) {
+            $(".showgif").attr("style","display:block")
+        }else{
+            $(".showgif").attr("style","display:none")
+        }
+                        
     }
     catch(err) { 
         //浏览器打开
