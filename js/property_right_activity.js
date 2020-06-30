@@ -158,7 +158,7 @@ $(function() {
 function linkApp(val) {
 	$("#otherShow").remove();
 	loginStatus = val
-	if (loginStatus) {
+	if (loginStatus == true) {
 		$(".showgif").attr("style", "display:block")
 	} else {
 		$(".showgif").attr("style", "display:none")
