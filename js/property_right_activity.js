@@ -7,7 +7,7 @@ $(function() {
 	try {
 		//app打开
 		// Tag.postMessage(''); 
-		var loginStatus
+	
 		isLogin.postMessage('');
 	} catch (err) {
 		//浏览器打开
@@ -154,7 +154,7 @@ $(function() {
 
 	})
 })
-
+var loginStatus
 function linkApp(val) {
 	$("#otherShow").remove();
 	loginStatus = val
