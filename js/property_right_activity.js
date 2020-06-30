@@ -13,7 +13,6 @@ $(function () {
             $("#otherShow").remove();
             loginStatus  = val 
         }
-        linkApp(0)
         if(loginStatus == 1) {
             $(".showgif").attr("style","display:block")
         }else{
