@@ -182,6 +182,7 @@ body, html {
 .generalframezz .generalcontent .login-password{
     width: 2.35rem;
     height: 0.48rem;
+    font-size: 0.14rem;
     border:0;
     background: transparent;
     outline: none;
@@ -227,6 +228,15 @@ body, html {
     line-height:0.17rem;
     text-align: center;
     justify-content: center;
+}
+.generalframezz .generalcontent .modal-cha{
+    display: flex;
+    position: absolute;
+    width:0.18rem;
+    height: 0.18rem;
+    top:0.1rem;
+    right: 0.1rem;
+    cursor: pointer;
 }
 .generalframezz .generalcontent .modal-img{
     width:0.87rem;
@@ -296,28 +306,40 @@ body, html {
 }
 .activity_box .header-two{
     width:3.75rem;
-    height: 7.60rem;
+    height: 4.32em;
     background: url(../images/two1.png) no-repeat;
     background-size: cover;
 }
 .activity_box .time-tip-two{
     width:3.75rem;
-    height: 4.46rem;
+    height: 3.28rem;
     background: url(../images/two2.png) no-repeat;
     background-size: cover;
 }
 .activity_box .protect-two{
     width:3.75rem;
-    height: 6.22rem;
+    height: 4.46rem;
     background: url(../images/two3.png) no-repeat;
     background-size: cover;
 }
 .activity_box .new-person-two{
     width:3.75rem;
-    height: 6.51rem;
+    height:2.44rem;
     background: url(../images/two4.png) no-repeat;
     background-size: cover;
-    margin-bottom: 0.9rem;
+}
+.activity_box .new-one{
+    width:3.75rem;
+    height:3.78rem;
+    background: url(../images/two55.png) no-repeat;
+    background-size: cover;
+}
+.activity_box .new-two{
+    width:3.34rem;
+    height:5.95rem;
+    background: url(../images/two66.png) no-repeat;
+    background-size: cover;
+    margin:0.22rem auto 1.2rem;
 }
 .activity_box .fixed-box .fixed-rightbtn-two{
     width:1.48rem;
@@ -331,6 +353,20 @@ body, html {
     font-size:0.14rem;
     font-weight:bold;
     color:rgba(51,51,51,1);
+}
+.activity_box .fixed-box .fixed-leftbtn-two{
+    width:1.48rem;
+    height:0.40rem;
+    line-height:0.4rem;
+    border:0;
+    background:rgba(255,216,0,1);
+    box-shadow:0rem 0.01rem 0.14rem 0rem rgba(0,0,0,0.04);
+    border-radius:0.20rem;
+    outline: none;
+    font-size:0.14rem;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    margin-right: 0.29rem;
 }
 .generalframezz .generalcontent .modal-img-two{
     width:0.97rem;

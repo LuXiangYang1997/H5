@@ -1,27 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />     
-	<meta name="apple-mobile-web-app-capable" content="yes" />    
-	<meta name="format-detection" content="telephone=no" />
-	<title>二维码</title>	
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="icon" href="./favicon.ico">
+    <title>下载取证宝APP</title>
+    <meta name="keywords"
+          content="版权服务,版权百科,版权,版权家,版权存证,版权交易,版权监测,版权维权,版权登记,版权公证,版权签名,数字版权,版全家,版权侵权取证,版权法律维权服务,区块链版权登记,区块链版权确权,区块链版权存证,区块链版权">
+    <meta name="description"
+          content="版权家,人人都是创作者，人人都是版权人。版权家秉持让版权实现更大价值的使命，使用创新的版权区块链和版权签名技术，为版权人提供极致的版权存证、版权交易、版权监测、版权维权服务体验。">
+    <link rel="stylesheet" href="./css/mobile_reset.css">
+    <link rel="stylesheet" href="./css/property_right_activity.css">       
 </head>
-<body>
-	<div></div>
+<body style="background: #fff;height: 100vh;">
+	<!-- 在浏览器打开 -->
+		<div class="generalframezz" style="display: none;" id="browserModal">
+			<div class="topbox">
+				<div style="height: 0.25rem;display: flex;align-items: center;margin:0.67rem 0.11rem 0rem 0.23rem;">
+					<img src="./images/1.png" class="img1" />
+					<span class="browerp">点击右上角的</span>
+					<img src="./images/dian.png" class="img2" />
+					<span class="browerp">按钮</span>
+				</div>
+				<div style="display: flex;">
+					<img src="./images/jian.png" class="img3" />
+				</div>
+			</div>
+			<div style="height: 0.25rem;display: flex;align-items: center;margin:0.28rem 0 0 0.51rem;">
+				<img src="./images/2.png" class="img1" />
+				<span class="browerp">选择</span>
+				<span class="browerp">“在浏览器中打开”</span>
+			</div>
+		</div>
 </body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/fontsizeset.js"></script>
 <script>
-  	var u = navigator.userAgent;
-	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-	if(isAndroid){
-		//android环境　　　　　　
-	　　alert("安卓下载地址")
-	}else if(isiOS){
-		//ios环境
-		alert("ios下载地址")   
-	}else{
-		alert("不是手机终端")
-	} 
+	$(window).load(function(){
+		var u = navigator.userAgent;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		if(isAndroid){
+			//android环境　　　		
+			let ua = window.navigator.userAgent.toLowerCase();
+			if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+				$("#browserModal").attr("style","display:block")
+			}else{
+				$("#browserModal").attr("style","display:none")
+				window.location.href="http://file.bqj.cn/file/0109f5d17eda9f79871478a252516359.apk"　　　
+			}
+		}else if(isiOS){
+			//ios环境
+			window.location.href="https://apps.apple.com/cn/app/%E5%8F%96%E8%AF%81%E5%AE%9D/id1184801162?mt=8" 
+		}else{
+			alert("不是手机终端")
+		} 
+　	})
+  
 </script>
 </html>

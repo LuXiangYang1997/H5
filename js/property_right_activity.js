@@ -1,13 +1,25 @@
-var interfaceUrl = 'https://tsmarsss.bqj.cn'; //测试环境
-//var interfaceUrl = 'https://svip.bqj.cn'; //正式环境
+//var interfaceUrl = 'https://tsmars.bqj.cn'; //测试环境
+var interfaceUrl = 'https://svip.bqj.cn'; //正式环境
 var btnFlag = true;
 
 $(function () {
     //登录状态
     try {
         //app打开
-        Tag.postMessage('');   
-        $("#otherShow").remove()                 
+        // Tag.postMessage(''); 
+        var loginStatus 
+        function linkApp(val){           
+            isLogin.postMessage('');
+            $("#otherShow").remove();
+            loginStatus  = val 
+        }
+        linkApp(0)
+        if(loginStatus==true) {
+            $(".showgif").attr("style","display:block")
+        }else{
+            $(".showgif").attr("style","display:none")
+        }
+                        
     }
     catch(err) { 
         //浏览器打开
@@ -51,6 +63,10 @@ $(function () {
         //     toast("请输入8-20位字母加数字组合")
         //     return false
         // }
+        if(passwordOne.length <=0){
+            toast("请输入密码")
+            return false;
+        }
         if(btnFlag){
             btnFlag = false;
             loginActivity(phoneLogin,passwordOne)
@@ -70,7 +86,7 @@ $(function () {
         }
         let passwordTwo = $('#passwordTwo').val();
         if(!checkPasswordNum(passwordTwo)){
-            toast("请输入8-20位字母加数字组合")
+            // toast("请输入8-20位字母加数字组合")
             return false
         }
         if(btnFlag){
@@ -127,18 +143,28 @@ $(function () {
     })
     //去浏览器下载
     $("#gobower").click(function(){
-        //判断是否是微信浏览器的函数
-        //window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，这个属性可以用来判断浏览器类型
-        var ua = window.navigator.userAgent.toLowerCase();
-        //通过正则表达式匹配ua中是否含有MicroMessenger字符串
-        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
-            $("#happyModal").attr("style","display:none")
-            $("#browserModal").attr("style","display:block")
+        let u = navigator.userAgent;
+        let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if(isAndroid){
+            //android环境　　　　　　
+            let ua = window.navigator.userAgent.toLowerCase();
+            if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                $("#happyModal").attr("style","display:none")
+                // $("#browserModal").attr("style","display:block")
+                window.location.href="https://static.bqj.cn/evidenceActivity/h5/code.html" 
+            }else{
+                $("#happyModal").attr("style","display:none")
+                $("#browserModal").attr("style","display:none")
+                window.location.href="http://file.bqj.cn/file/0109f5d17eda9f79871478a252516359.apk"                
+            }
+        }else if(isiOS){
+            //ios环境
+            window.location.href="https://apps.apple.com/cn/app/%E5%8F%96%E8%AF%81%E5%AE%9D/id1184801162?mt=8" 
         }else{
-           console.log("普通浏览器")
-        }
-  
-       
+            console.log("不是手机终端")
+        } 
+
     })
 })
 //登录
@@ -162,7 +188,8 @@ function loginActivity(phoneLogin,passwordOne) {
                 $(".user-p").attr("style","display:block")
                 $(".no-p").attr("style","display:none")
                 $(".showgif").attr("style","display:block")
-                Cookies.set("userInfo", JSON.stringify(res.register), { expires: 7 });                
+                // Cookies.set("userInfo", JSON.stringify(res.register), { expires: 7 });  
+                Cookies.set("userInfo", JSON.stringify(res.register));              
             }
             else{
                 toast(res.message)
@@ -319,6 +346,7 @@ function inviteFriend(val){
         burialPoint('website','shareActivity','10001');
         window.location.href="share.html"
     }else if(val==2){
+        burialPoint('website','shareActivityB','10003');
         window.location.href="shareTwo.html"
     }
     
@@ -328,34 +356,27 @@ function inviteFriend(val){
 function receiveGift(val){
     if(val==1){
         burialPoint('website','receiveActivity','10002');
-    }   
+    }else if(val==2){
+        burialPoint('website','receiveActivityB','10004');
+    }  
     let userInfo = Cookies.get("userInfo")?JSON.parse(Cookies.get("userInfo")):'';
     if(userInfo.length == 0){
         $("#bigModal").attr("style","display:block")
         return false;
     }
-    $.ajax({
-        url: interfaceUrl + '/front/evidence/activity/getEvidenceActivityUrl',
-        type: "GET",
-        xhrFields: {
-            withCredentials: true
-        },                   
-        success:function (res) {
-            if(res.code=='200'){                          
-                let code = res.evidenceActivityUrl
-                let n1 = code.length;
-                let n2 = code.indexOf("=");//取得=号的位置
-                let id = code.substr(n2 + 1, n1 - n2);//从=号后面的内容
-                console.log(id)
-                possessGift(id)
-            }else{
-                toast(res.message)
-            }
-        },
-        error: function () {
-            toast('活动太火爆，请刷新后重试~');
-        }
-    })
+    // console.log(window.location)
+    //地址栏后面有参数则拼接参数，没有的话传空
+    if(window.location.search){
+        let code = window.location.href
+        let n1 = code.length;
+        let n2 = code.indexOf("=");//取得=号的位置
+        let id = code.substr(n2 + 1, n1 - n2);//从=号后面的内容
+        possessGift(id)
+    }else{
+        let idCode = "";
+        possessGift(idCode);
+    }
+   
 }
 
 //领取礼包
@@ -372,6 +393,8 @@ function possessGift(code){
                 $("#sorryModal").attr("style","display:block")
             }else if(res.code=='200'){
                 $("#happyModal").attr("style","display:block")                
+            }else if(res.code=='203'){
+                toast("您已经领取过注册礼包，不能重复领取")                
             }else{
                 toast(res.message)
             }
@@ -399,6 +422,10 @@ function golink(val){
     
 }
 
+//关闭弹框
+function closeCha(){
+    $("#happyModal").attr("style","display:none")
+}
 /********************检查手机号*****************/
 function checkPhoneNum (phonevalue) {
     if(phonevalue.length != 11){
@@ -414,12 +441,14 @@ function checkPhoneNum (phonevalue) {
 /********************检查密码*****************/
 function checkPasswordNum (passwordvalue) {
     if(passwordvalue.length <=0){
+        toast("请输入密码")
         return false;
     }
     var passwordReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$/;
     if (passwordReg.test(passwordvalue)) {
         return true
     } else {
+        toast("请输入8-20位字母加数字组合")
         return false
     }
 }
@@ -438,12 +467,10 @@ function GetQueryString (name) {
 
 //app用来调用领取成功
 function showSuccessAPP(){
-	alert("ceshisuccess")
     $("#happyModal").attr("style","display:block")
     $("#gobower").remove()
 }
 //app用来调用老用户
 function showFailAPP(){
-		alert("ceshifail")
     $("#sorryModal").attr("style","display:block")
 }
