@@ -14,12 +14,11 @@ $(function () {
             loginStatus  = val 
         }
         linkApp(0)
-        if(loginStatus==1) {
+        if(loginStatus == 1) {
             $(".showgif").attr("style","display:block")
         }else{
             $(".showgif").attr("style","display:none")
-        }
-                        
+        }            
     }
     catch(err) { 
         //浏览器打开
