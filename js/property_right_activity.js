@@ -11,14 +11,14 @@ $(function () {
         function linkApp(val){           
             isLogin.postMessage('');
             $("#otherShow").remove();
-            loginStatus  = val 
-        }
-		alert(loginStatus);
-        if(loginStatus == 1) {
-            $(".showgif").attr("style","display:block")
-        }else{
-            $(".showgif").attr("style","display:none")
-        }            
+            loginStatus  = val
+			alert(loginStatus);
+			if(loginStatus == 1) {
+			    $(".showgif").attr("style","display:block")
+			}else{
+			    $(".showgif").attr("style","display:none")
+			}
+        } 
     }
     catch(err) { 
         //浏览器打开
