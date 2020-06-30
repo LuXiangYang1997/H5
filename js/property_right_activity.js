@@ -14,7 +14,7 @@ $(function () {
             loginStatus  = val 
         }
         linkApp(0)
-        if(loginStatus) {
+        if(loginStatus == "true") {
             $(".showgif").attr("style","display:block")
         }else{
             $(".showgif").attr("style","display:none")
